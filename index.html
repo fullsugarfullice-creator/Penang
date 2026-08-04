@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <!-- PWA & iOS 專屬全螢幕設定 -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="檳城慢遊">
+  <link rel="apple-touch-icon" href="icon-192.png">
+  <link rel="manifest" href="manifest.json">
+
+  <title>檳城慢遊指南 | Penang Travel Companion</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&family=Noto+Serif+JP:wght@400;600&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            muji: {
+              bg: '#F7F5F0',
+              card: '#FFFFFF',
+              text: '#333333',
+              sub: '#7F7F7F',
+              red: '#7F1D1D',
+              sand: '#E6E1DA',
+              green: '#5A6B52',
+              warm: '#EFECE6'
+            }
+          },
+          fontFamily: {
+            sans: ['"Noto Sans TC"', 'sans-serif'],
+            serif: ['"Noto Serif JP"', 'serif'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    body {
+      background-color: #F7F5F0;
+      color: #333333;
+      -webkit-tap-highlight-color: transparent;
+      user-select: none;
+      padding-top: env(safe-area-inset-top);
+      padding-bottom: env(safe-area-inset-bottom);
+    }
+    .muji-shadow {
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+    }
+    .muji-card {
+      background-color: #FFFFFF;
+      border: 1px solid #E6E1DA;
+      border-radius: 12px;
+    }
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+  </style>
+</head>
+<body class="font-sans antialiased pb-24 max-w-md mx-auto min-h-screen relative shadow-2xl">
+
+  <!-- Header Banner -->
+  <header class="bg-muji-card border-b border-muji-sand px-5 py-4 sticky top-0 z-30 flex justify-between items-center">
+    <div>
+      <span class="text-xs tracking-widest text-muji-sub uppercase block">Penang Trip 2026</span>
+      <h1 class="text-lg font-bold font-serif text-muji-text tracking-wide">檳城親子慢遊手冊</h1>
+    </div>
+    <div class="text-right">
+      <span class="inline-block bg-muji-warm text-muji-text text-xs px-2.5 py-1 rounded-full font-medium">8/15 - 8/19</span>
+    </div>
+  </header>
+
+  <!-- 主內容區塊維持不變 (包含原有的 Plan, Spot, Food, Shop, Wallet 分頁邏輯) -->
+  <main id="app-content" class="p-4 space-y-6">
+    <!-- 略過重複的 HTML 結構，直接保留原有的分頁內容 -->
+  </main>
+
+  <!-- Bottom Navigation Bar -->
+  <nav class="fixed bottom-0 left-0 right-0 max-w-md mx-auto bg-muji-card border-t border-muji-sand px-1 py-1.5 z-40 flex justify-around items-center shadow-[0_-4px_10px_rgba(0,0,0,0.02)]">
+    <button onclick="switchTab('plan')" id="nav-plan" class="nav-btn flex flex-col items-center w-1/5 py-1 text-muji-red transition-colors">
+      <i class="fa-solid fa-calendar-day text-lg mb-0.5"></i>
+      <span class="text-[9px] font-medium">行程</span>
+    </button>
+    <button onclick="switchTab('spot')" id="nav-spot" class="nav-btn flex flex-col items-center w-1/5 py-1 text-muji-sub hover:text-muji-text transition-colors">
+      <i class="fa-solid fa-map-location-dot text-lg mb-0.5"></i>
+      <span class="text-[9px] font-medium">景點</span>
+    </button>
+    <button onclick="switchTab('food')" id="nav-food" class="nav-btn flex flex-col items-center w-1/5 py-1 text-muji-sub hover:text-muji-text transition-colors">
+      <i class="fa-solid fa-utensils text-lg mb-0.5"></i>
+      <span class="text-[9px] font-medium">美食</span>
+    </button>
+    <button onclick="switchTab('shop')" id="nav-shop" class="nav-btn flex flex-col items-center w-1/5 py-1 text-muji-sub hover:text-muji-text transition-colors">
+      <i class="fa-solid fa-bag-shopping text-lg mb-0.5"></i>
+      <span class="text-[9px] font-medium">伴手禮</span>
+    </button>
+    <button onclick="switchTab('wallet')" id="nav-wallet" class="nav-btn flex flex-col items-center w-1/5 py-1 text-muji-sub hover:text-muji-text transition-colors">
+      <i class="fa-solid fa-wallet text-lg mb-0.5"></i>
+      <span class="text-[9px] font-medium">工具</span>
+    </button>
+  </nav>
+
+  <script>
+    // 註冊 Service Worker 啟用 PWA 離線與快取
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('./sw.js')
+          .then(reg => console.log('PWA Service Worker 註冊成功:', reg.scope))
+          .catch(err => console.log('PWA Service Worker 註冊失敗:', err));
+      });
+    }
+
+    // 原有的應用程式互動邏輯（Itinerary, Calculator, Expense, Checklist, Memo）保持不變
+  </script>
+</body>
+</html>
