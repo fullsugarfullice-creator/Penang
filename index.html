@@ -2,7 +2,6 @@
 <html lang="zh-TW">
 <head>
   <meta charset="UTF-8">
-  <!-- PWA & iOS 專屬全螢幕設定 -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -48,8 +47,6 @@
       color: #333333;
       -webkit-tap-highlight-color: transparent;
       user-select: none;
-      padding-top: env(safe-area-inset-top);
-      padding-bottom: env(safe-area-inset-bottom);
     }
     .muji-shadow {
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
@@ -66,6 +63,9 @@
       -ms-overflow-style: none;
       scrollbar-width: none;
     }
+    #photo-modal {
+      backdrop-filter: blur(4px);
+    }
   </style>
 </head>
 <body class="font-sans antialiased pb-24 max-w-md mx-auto min-h-screen relative shadow-2xl">
@@ -81,9 +81,173 @@
     </div>
   </header>
 
-  <!-- 主內容區塊維持不變 (包含原有的 Plan, Spot, Food, Shop, Wallet 分頁邏輯) -->
+  <!-- Main Content Area -->
   <main id="app-content" class="p-4 space-y-6">
-    <!-- 略過重複的 HTML 結構，直接保留原有的分頁內容 -->
+
+    <!-- PAGE 1: PLAN (行程表) -->
+    <section id="page-plan" class="page-view space-y-6">
+      <div class="space-y-3">
+        <div class="muji-card p-4 muji-shadow">
+          <div class="flex items-center justify-between border-b border-muji-sand pb-2 mb-3">
+            <span class="text-xs font-bold text-muji-red tracking-wider"><i class="fa-solid fa-plane mr-1"></i> 航班資訊</span>
+            <span class="text-xs text-muji-sub">中華航空 (CI)</span>
+          </div>
+          <div class="grid grid-cols-2 gap-2 text-sm">
+            <div class="bg-muji-bg p-2 rounded">
+              <div class="text-xs font-bold text-muji-text">去程 CI731</div>
+              <div class="text-[10px] text-muji-sub">8/15 (六)</div>
+              <div class="font-mono mt-1 text-muji-red font-bold">09:30 - 14:10</div>
+              <div class="text-[10px] mt-1 text-muji-sub">桃園(T1) ➔ 檳城</div>
+            </div>
+            <div class="bg-muji-bg p-2 rounded">
+              <div class="text-xs font-bold text-muji-text">回程 CI732</div>
+              <div class="text-[10px] text-muji-sub">8/19 (三)</div>
+              <div class="font-mono mt-1 text-muji-red font-bold">15:10 - 19:55</div>
+              <div class="text-[10px] mt-1 text-muji-sub">檳城 ➔ 桃園(T1)</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="muji-card p-4 muji-shadow">
+          <div class="flex items-center justify-between border-b border-muji-sand pb-2 mb-2">
+            <span class="text-xs font-bold text-muji-green tracking-wider"><i class="fa-solid fa-hotel mr-1"></i> 住宿安排</span>
+          </div>
+          <div class="text-xs space-y-2 text-muji-text">
+            <div class="flex items-start justify-between">
+              <div>
+                <p class="font-bold text-muji-red">8/15 - 8/17 (前兩晚)</p>
+                <p class="mt-0.5">硬石酒店 Hard Rock Hotel Penang (含早)</p>
+              </div>
+              <a href="https://www.google.com/maps/search/?api=1&query=Hard+Rock+Hotel+Penang" target="_blank" class="text-blue-600 bg-blue-50 px-2 py-1 rounded text-[10px] border border-blue-200 whitespace-nowrap"><i class="fa-solid fa-map-location-dot"></i> Map</a>
+            </div>
+            <div class="border-t border-dashed border-muji-sand pt-2 flex items-start justify-between">
+              <div>
+                <p class="font-bold text-muji-red">8/17 - 8/19 (後兩晚)</p>
+                <p class="mt-0.5">林恩故事屋 Lynn's Story House (無早)</p>
+              </div>
+              <a href="https://www.google.com/maps/search/?api=1&query=Lynn's+Story+House+Penang" target="_blank" class="text-blue-600 bg-blue-50 px-2 py-1 rounded text-[10px] border border-blue-200 whitespace-nowrap"><i class="fa-solid fa-map-location-dot"></i> Map</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Day Filter Tabs -->
+      <div class="flex overflow-x-auto gap-2 no-scrollbar py-1">
+        <button onclick="filterDay(1)" class="day-tab bg-muji-text text-white text-xs px-4 py-2 rounded-full whitespace-nowrap font-medium transition-all shadow-sm" data-day="1">8/15 Day 1</button>
+        <button onclick="filterDay(2)" class="day-tab bg-muji-card border border-muji-sand text-muji-sub text-xs px-4 py-2 rounded-full whitespace-nowrap font-medium transition-all" data-day="2">8/16 Day 2</button>
+        <button onclick="filterDay(3)" class="day-tab bg-muji-card border border-muji-sand text-muji-sub text-xs px-4 py-2 rounded-full whitespace-nowrap font-medium transition-all" data-day="3">8/17 Day 3</button>
+        <button onclick="filterDay(4)" class="day-tab bg-muji-card border border-muji-sand text-muji-sub text-xs px-4 py-2 rounded-full whitespace-nowrap font-medium transition-all" data-day="4">8/18 Day 4</button>
+        <button onclick="filterDay(5)" class="day-tab bg-muji-card border border-muji-sand text-muji-sub text-xs px-4 py-2 rounded-full whitespace-nowrap font-medium transition-all" data-day="5">8/19 Day 5</button>
+      </div>
+
+      <!-- Timeline Container -->
+      <div id="timeline-content" class="space-y-4"></div>
+    </section>
+
+    <!-- PAGE 2: SPOT (景點與飯店導覽) -->
+    <section id="page-spot" class="page-view hidden space-y-6">
+      <div class="text-center py-2">
+        <h2 class="text-lg font-serif font-bold text-muji-text">景點與飯店深度導覽</h2>
+        <p class="text-xs text-muji-sub mt-1">地理位置、歷史故事與住宿亮點</p>
+      </div>
+
+      <article class="muji-card overflow-hidden muji-shadow">
+        <img src="https://images.unsplash.com/photo-1582719508461-905c673771fd?auto=format&fit=crop&w=800&q=80" alt="Hard Rock Hotel Penang" class="w-full h-48 object-cover">
+        <div class="p-5 space-y-3">
+          <div class="flex justify-between items-center">
+            <span class="text-[10px] font-bold text-muji-red tracking-widest uppercase bg-red-50 px-2 py-1 rounded">Hotel / 前兩晚住宿</span>
+            <a href="https://www.google.com/maps/search/?api=1&query=Hard+Rock+Hotel+Penang" target="_blank" class="text-blue-600 text-xs"><i class="fa-solid fa-map-location-dot"></i> Google Maps</a>
+          </div>
+          <h3 class="text-lg font-serif font-bold text-muji-text">檳城硬石酒店 Hard Rock Hotel Penang</h3>
+          <p class="text-xs text-muji-text leading-relaxed font-light text-justify">位於 Batu Ferringhi 海灘區，擁全檳城最大的 26,000 平方英尺潟湖泳池與兒童水上滑水道，結合美式搖滾風格與南洋熱帶度假風情。</p>
+        </div>
+      </article>
+
+      <article class="muji-card overflow-hidden muji-shadow">
+        <img src="https://images.unsplash.com/photo-1555854877-bab0e564b8d5?auto=format&fit=crop&w=800&q=80" alt="Lynn's Story House Penang" class="w-full h-48 object-cover">
+        <div class="p-5 space-y-3">
+          <div class="flex justify-between items-center">
+            <span class="text-[10px] font-bold text-muji-green tracking-widest uppercase bg-green-50 px-2 py-1 rounded">Homestay / 後兩晚住宿</span>
+            <a href="https://www.google.com/maps/search/?api=1&query=Lynn's+Story+House+Penang" target="_blank" class="text-blue-600 text-xs"><i class="fa-solid fa-map-location-dot"></i> Google Maps</a>
+          </div>
+          <h3 class="text-lg font-serif font-bold text-muji-text">林恩故事屋 Lynn's Story House Penang</h3>
+          <p class="text-xs text-muji-text leading-relaxed font-light text-justify">位於喬治市世界文化遺產核心區的質感老宅民宿，保留戰前店屋天井與木質結構，充滿濃厚的歲月故事感與家一般的溫馨。</p>
+        </div>
+      </article>
+
+      <article class="muji-card overflow-hidden muji-shadow">
+        <img src="https://images.unsplash.com/photo-1533900298318-6b8da08a523e?auto=format&fit=crop&w=800&q=80" alt="Batu Ferringhi Night Market" class="w-full h-48 object-cover">
+        <div class="p-5 space-y-3">
+          <div class="flex justify-between items-center">
+            <span class="text-[10px] font-bold text-yellow-700 tracking-widest uppercase bg-yellow-50 px-2 py-1 rounded">Beach & Night Market / 景點</span>
+            <a href="https://www.google.com/maps/search/?api=1&query=Batu+Ferringhi+Night+Market" target="_blank" class="text-blue-600 text-xs"><i class="fa-solid fa-map-location-dot"></i> Google Maps</a>
+          </div>
+          <h3 class="text-lg font-serif font-bold text-muji-text">巴都丁宜海灘與夜市</h3>
+          <p class="text-xs text-muji-text leading-relaxed font-light text-justify">檳城西北部最知名的海灘渡假勝地，傍晚沿著主幹道展開長達數公里的觀光夜市，漫步感受南洋海風。</p>
+        </div>
+      </article>
+    </section>
+
+    <!-- PAGE 3: FOOD (美食圖鑑) -->
+    <section id="page-food" class="page-view hidden space-y-6">
+      <div class="text-center py-2">
+        <h2 class="text-lg font-serif font-bold text-muji-text">檳城在地美食圖鑑 & 經典名店</h2>
+        <p class="text-xs text-muji-sub mt-1">嚴選三大種族代表美味、葷素標示與地圖導航</p>
+      </div>
+      <div class="muji-card p-4 muji-shadow space-y-2">
+        <h3 class="text-sm font-bold text-muji-text">檳城炒粿條 (Char Kway Teow)</h3>
+        <p class="text-xs text-muji-text leading-relaxed">檳城美食之魂！素食版本多以豆腐糕、香菇與特調醬油炒出鑊氣。</p>
+      </div>
+    </section>
+
+    <!-- PAGE 4: SHOP (購物與伴手禮) -->
+    <section id="page-shop" class="page-view hidden space-y-6">
+      <div class="text-center py-2">
+        <h2 class="text-lg font-serif font-bold text-muji-text">檳城必買伴手禮指南</h2>
+        <p class="text-xs text-muji-sub mt-1">超市掃貨與傳統糕餅推薦</p>
+      </div>
+      <div class="muji-card p-3 muji-shadow">
+        <h4 class="text-sm font-bold text-muji-text">MyKuali 檳城白咖哩麵 / BOH 茶包</h4>
+        <p class="text-[10px] text-muji-sub mt-1">經典伴手禮，送禮自用兩相宜。</p>
+      </div>
+    </section>
+
+    <!-- PAGE 5: WALLET (記帳與工具) -->
+    <section id="page-wallet" class="page-view hidden space-y-6">
+      <div class="muji-card p-5 muji-shadow space-y-4">
+        <div class="flex justify-between items-center border-b border-muji-sand pb-2">
+          <h3 class="font-bold text-sm text-muji-text"><i class="fa-solid fa-calculator mr-1.5 text-muji-sub"></i> 匯率計算機</h3>
+          <div class="text-[10px] text-muji-sub flex items-center bg-muji-warm px-2 py-1 rounded">
+            1 MYR ≈ <input id="rate-input" type="number" step="0.1" value="7.3" class="w-10 ml-1 text-center bg-white border border-muji-sand rounded font-bold text-muji-text focus:outline-none"> TWD
+          </div>
+        </div>
+        <div class="bg-muji-bg p-3 rounded-lg border border-muji-sand text-right shadow-inner">
+          <div id="calc-expression" class="text-xs text-muji-sub h-4 overflow-hidden truncate">0</div>
+          <div id="calc-myr" class="text-2xl font-mono font-bold text-muji-text tracking-tight">RM 0</div>
+          <div id="calc-twd" class="text-xs text-muji-green font-medium mt-1">≈ NT$ 0</div>
+        </div>
+        <div class="grid grid-cols-4 gap-2 text-sm font-mono">
+          <button onclick="calcInput('C')" class="p-3 bg-red-50 text-red-600 border border-red-100 font-bold rounded-lg">C</button>
+          <button onclick="calcInput('/')" class="p-3 bg-muji-warm text-muji-text font-bold rounded-lg">÷</button>
+          <button onclick="calcInput('*')" class="p-3 bg-muji-warm text-muji-text font-bold rounded-lg">×</button>
+          <button onclick="calcInput('-')" class="p-3 bg-muji-warm text-muji-text font-bold rounded-lg">-</button>
+          <button onclick="calcInput('7')" class="p-3 bg-white border border-muji-sand rounded-lg">7</button>
+          <button onclick="calcInput('8')" class="p-3 bg-white border border-muji-sand rounded-lg">8</button>
+          <button onclick="calcInput('9')" class="p-3 bg-white border border-muji-sand rounded-lg">9</button>
+          <button onclick="calcInput('+')" class="p-3 bg-muji-warm text-muji-text font-bold rounded-lg">+</button>
+          <button onclick="calcInput('4')" class="p-3 bg-white border border-muji-sand rounded-lg">4</button>
+          <button onclick="calcInput('5')" class="p-3 bg-white border border-muji-sand rounded-lg">5</button>
+          <button onclick="calcInput('6')" class="p-3 bg-white border border-muji-sand rounded-lg">6</button>
+          <button onclick="calcEqual()" class="row-span-2 bg-muji-text text-white font-bold rounded-lg flex items-center justify-center text-xl">=</button>
+          <button onclick="calcInput('1')" class="p-3 bg-white border border-muji-sand rounded-lg">1</button>
+          <button onclick="calcInput('2')" class="p-3 bg-white border border-muji-sand rounded-lg">2</button>
+          <button onclick="calcInput('3')" class="p-3 bg-white border border-muji-sand rounded-lg">3</button>
+          <button onclick="calcInput('0')" class="col-span-2 p-3 bg-white border border-muji-sand rounded-lg">0</button>
+          <button onclick="calcInput('.')" class="p-3 bg-white border border-muji-sand rounded-lg">.</button>
+        </div>
+      </div>
+    </section>
+
   </main>
 
   <!-- Bottom Navigation Bar -->
@@ -111,16 +275,124 @@
   </nav>
 
   <script>
-    // 註冊 Service Worker 啟用 PWA 離線與快取
-    if ('serviceWorker' in navigator) {
-      window.addEventListener('load', () => {
-        navigator.serviceWorker.register('./sw.js')
-          .then(reg => console.log('PWA Service Worker 註冊成功:', reg.scope))
-          .catch(err => console.log('PWA Service Worker 註冊失敗:', err));
+    const ITINERARY = {
+      1: {
+        date: '8/15 (六)',
+        title: '抵達檳城 ➔ Batu Ferringhi 海濱渡假',
+        items: [
+          { time: '14:10', title: '搭乘 CI731 順利抵達檳城機場', desc: '辦理入境、提領行李。建議叫 Grab 前往 Batu Ferringhi。', tag: '交通' },
+          { time: '15:30', title: 'Hard Rock Hotel Check-in', desc: '辦理入住。長輩休息，小朋友玩水。', tag: '住宿', map: 'Hard Rock Hotel Penang' }
+        ]
+      },
+      2: {
+        date: '8/16 (日)',
+        title: '生態探索 ➔ 渡假設施體驗',
+        items: [
+          { time: '09:30', title: 'Entopia 蟲鳴大地 (蝴蝶公園)', desc: '全馬最大蝴蝶溫室與室內探索館，冷氣舒適。', tag: '景點', map: 'Entopia by Penang Butterfly Farm' }
+        ]
+      },
+      3: {
+        date: '8/17 (一)',
+        title: '升旗山纜車 ➔ 喬治市古蹟巡禮',
+        items: [
+          { time: '09:00', title: '升旗山 (Penang Hill)', desc: '搭乘纜車登頂，俯瞰檳城大橋美景。', tag: '景點', map: 'Penang Hill Upper Station' }
+        ]
+      },
+      4: {
+        date: '8/18 (二)',
+        title: '食物狂想館 ➔ 採買',
+        items: [
+          { time: '10:00', title: '食物狂想館 (Wonderfood Museum)', desc: '超大美食模型與搞怪造景，全館冷氣。', tag: '景點', map: 'Wonderfood Museum Penang' }
+        ]
+      },
+      5: {
+        date: '8/19 (三)',
+        title: '檳城機場返台',
+        items: [
+          { time: '11:30', title: '搭 Grab 前往檳城機場', desc: '準備搭乘 CI732 班機返台。', tag: '交通', highlight: true }
+        ]
+      }
+    };
+
+    let currentCalcExpr = '';
+
+    document.addEventListener('DOMContentLoaded', () => {
+      filterDay(1);
+    });
+
+    function switchTab(tabName) {
+      document.querySelectorAll('.page-view').forEach(el => el.classList.add('hidden'));
+      document.getElementById(`page-${tabName}`).classList.remove('hidden');
+
+      document.querySelectorAll('.nav-btn').forEach(btn => {
+        btn.classList.remove('text-muji-red');
+        btn.classList.add('text-muji-sub');
       });
+      document.getElementById(`nav-${tabName}`).classList.remove('text-muji-sub');
+      document.getElementById(`nav-${tabName}`).classList.add('text-muji-red');
+      window.scrollTo(0, 0);
     }
 
-    // 原有的應用程式互動邏輯（Itinerary, Calculator, Expense, Checklist, Memo）保持不變
+    function filterDay(dayNum) {
+      document.querySelectorAll('.day-tab').forEach(btn => {
+        if(parseInt(btn.dataset.day) === dayNum) {
+          btn.classList.remove('bg-muji-card', 'border', 'border-muji-sand', 'text-muji-sub');
+          btn.classList.add('bg-muji-text', 'text-white');
+        } else {
+          btn.classList.add('bg-muji-card', 'border', 'border-muji-sand', 'text-muji-sub');
+          btn.classList.remove('bg-muji-text', 'text-white');
+        }
+      });
+
+      const dayData = ITINERARY[dayNum];
+      const container = document.getElementById('timeline-content');
+      let html = `<div class="muji-card p-4 muji-shadow bg-muji-warm mb-3"><div class="font-serif font-bold text-base text-muji-text">${dayData.date}</div><div class="text-xs text-muji-sub mt-1">${dayData.title}</div></div>`;
+
+      dayData.items.forEach(item => {
+        const isHighlight = item.highlight ? 'border-l-4 border-muji-red bg-red-50' : 'bg-muji-card';
+        const mapButton = item.map ? `<a href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(item.map)}" target="_blank" class="inline-block mt-2 text-xs text-blue-700 bg-blue-50 border border-blue-200 px-2.5 py-1 rounded-full"><i class="fa-solid fa-location-dot mr-1"></i>Google Maps</a>` : '';
+        html += `<div class="muji-card p-4 muji-shadow ${isHighlight} relative mb-3"><div class="flex items-center justify-between mb-1.5"><span class="font-mono text-xs font-bold text-muji-red">${item.time}</span><span class="text-[10px] bg-muji-bg text-muji-sub px-2 py-0.5 rounded-full border border-muji-sand">${item.tag}</span></div><h4 class="font-bold text-sm text-muji-text">${item.title}</h4><p class="text-xs text-muji-sub mt-1 leading-relaxed">${item.desc}</p>${mapButton}</div>`;
+      });
+      container.innerHTML = html;
+    }
+
+    function calcInput(char) {
+      if(char === 'C') { currentCalcExpr = ''; } 
+      else { currentCalcExpr += char; }
+      updateCalcDisplay();
+    }
+    function calcEqual() {
+      try {
+        if(!currentCalcExpr) return;
+        const sanitized = currentCalcExpr.replace(/[^0-9+\-*/.]/g, '');
+        const res = Function(`'use strict'; return (${sanitized})`)();
+        currentCalcExpr = String(Math.round(res * 100) / 100);
+      } catch(e) { currentCalcExpr = 'Error'; }
+      updateCalcDisplay();
+    }
+    function updateCalcDisplay() {
+      const exprEl = document.getElementById('calc-expression');
+      const myrEl = document.getElementById('calc-myr');
+      const twdEl = document.getElementById('calc-twd');
+      const rate = parseFloat(document.getElementById('rate-input').value) || 7.3;
+
+      exprEl.innerText = currentCalcExpr || '0';
+      let val = 0;
+      try {
+        const sanitized = currentCalcExpr.replace(/[^0-9+\-*/.]/g, '');
+        val = sanitized ? Function(`'use strict'; return (${sanitized})`)() : 0;
+      } catch(e) { val = 0; }
+
+      if(isNaN(val) || val === Infinity) val = 0;
+      myrEl.innerText = `RM ${val.toFixed(2)}`;
+      twdEl.innerText = `≈ NT$ ${Math.round(val * rate)}`;
+    }
+
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('./sw.js').catch(err => console.log(err));
+      });
+    }
   </script>
 </body>
 </html>
