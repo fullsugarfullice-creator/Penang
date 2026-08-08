@@ -1,505 +1,232 @@
-<!DOCTYPE html>
-<html lang="zh-TW">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-  <meta name="apple-mobile-web-app-title" content="檳城慢遊">
-  <link rel="apple-touch-icon" href="icon-192.png">
-  <link rel="manifest" href="manifest.json">
-
-  <title>檳城親子慢遊手冊 | Penang Travel Companion</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&family=Noto+Serif+JP:wght@400;600&display=swap" rel="stylesheet">
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            muji: {
-              bg: '#F7F5F0',
-              card: '#FFFFFF',
-              text: '#333333',
-              sub: '#7F7F7F',
-              red: '#7F1D1D',
-              sand: '#E6E1DA',
-              green: '#5A6B52',
-              warm: '#EFECE6'
-            }
-          },
-          fontFamily: {
-            sans: ['"Noto Sans TC"', 'sans-serif'],
-            serif: ['"Noto Serif JP"', 'serif'],
-          }
-        }
-      }
-    }
-  </script>
-
-  <style>
-    body {
-      background-color: #F7F5F0;
-      color: #333333;
-      -webkit-tap-highlight-color: transparent;
-      user-select: none;
-    }
-    .muji-shadow {
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
-    }
-    .muji-card {
-      background-color: #FFFFFF;
-      border: 1px solid #E6E1DA;
-      border-radius: 12px;
-    }
-    .no-scrollbar::-webkit-scrollbar {
-      display: none;
-    }
-    .no-scrollbar {
-      -ms-overflow-style: none;
-      scrollbar-width: none;
-    }
-  </style>
-</head>
-<body class="font-sans antialiased pb-24 max-w-md mx-auto min-h-screen relative shadow-2xl">
-
-  <!-- Header Banner -->
-  <header class="bg-muji-card border-b border-muji-sand px-5 py-4 sticky top-0 z-30 flex justify-between items-center">
-    <div>
-      <span class="text-xs tracking-widest text-muji-sub uppercase block">Penang Trip 2026</span>
-      <h1 class="text-lg font-bold font-serif text-muji-text tracking-wide">檳城親子慢遊手冊</h1>
+```
+<!-- ================= PAGE 1: PLAN (行程表) ================= -->
+<section id="page-plan" class="page-view space-y-6">
+  <!-- 航班與住宿摘要卡片 -->
+  <div class="space-y-3">
+    <div class="muji-card p-4 muji-shadow">
+      <div class="flex items-center justify-between border-b border-muji-sand pb-2 mb-3">
+        <span class="text-xs font-bold text-muji-red tracking-wider"><i class="fa-solid fa-plane mr-1"></i> 航班資訊 (中華航空)</span>
+        <span class="text-xs text-muji-sub">直飛檳城</span>
+      </div>
+      <div class="grid grid-cols-2 gap-2 text-sm">
+        <div class="bg-muji-bg p-2.5 rounded">
+          <div class="text-xs font-bold text-muji-text">去程 CI731</div>
+          <div class="text-[10px] text-muji-sub">8/15 (六)</div>
+          <div class="font-mono mt-1 text-muji-red font-bold">09:30 - 14:10</div>
+          <div class="text-[10px] mt-1 text-muji-sub">桃園(T1) ➔ 檳城</div>
+        </div>
+        <div class="bg-muji-bg p-2.5 rounded">
+          <div class="text-xs font-bold text-muji-text">回程 CI732</div>
+          <div class="text-[10px] text-muji-sub">8/19 (三)</div>
+          <div class="font-mono mt-1 text-muji-red font-bold">15:10 - 19:55</div>
+          <div class="text-[10px] mt-1 text-muji-sub">檳城 ➔ 桃園(T1)</div>
+        </div>
+      </div>
     </div>
-    <div class="text-right">
-      <span class="inline-block bg-muji-warm text-muji-text text-xs px-2.5 py-1 rounded-full font-medium">8/15 - 8/19</span>
+
+    <div class="muji-card p-4 muji-shadow">
+      <div class="flex items-center justify-between border-b border-muji-sand pb-2 mb-2">
+        <span class="text-xs font-bold text-muji-green tracking-wider"><i class="fa-solid fa-hotel mr-1"></i> 住宿安排</span>
+      </div>
+      <div class="text-xs space-y-2 text-muji-text">
+        <div class="flex items-start justify-between">
+          <div>
+            <p class="font-bold text-muji-red">8/15 - 8/16 (前兩晚)</p>
+            <p class="mt-0.5">檳城硬石酒店 Hard Rock Hotel Penang</p>
+          </div>
+          <a href="[https://maps.app.goo.gl/NnAT5EHwQbYaXY646](https://maps.app.goo.gl/NnAT5EHwQbYaXY646)" target="_blank" class="text-blue-600 bg-blue-50 px-2 py-1 rounded text-[10px] border border-blue-200 whitespace-nowrap"><i class="fa-solid fa-map-location-dot"></i> Map</a>
+        </div>
+        <div class="border-t border-dashed border-muji-sand pt-2 flex items-start justify-between">
+          <div>
+            <p class="font-bold text-muji-red">8/17 - 8/18 (後兩晚)</p>
+            <p class="mt-0.5">檳城故事酒店 / 檳城林恩故事屋</p>
+          </div>
+          <a href="[https://maps.app.goo.gl/oZZiYnui9AspJaiJ8](https://maps.app.goo.gl/oZZiYnui9AspJaiJ8)" target="_blank" class="text-blue-600 bg-blue-50 px-2 py-1 rounded text-[10px] border border-blue-200 whitespace-nowrap"><i class="fa-solid fa-map-location-dot"></i> Map</a>
+        </div>
+      </div>
     </div>
-  </header>
+  </div>
 
-  <!-- Main Content Area -->
-  <main id="app-content" class="p-4 space-y-6">
+  <!-- Day Filter Tabs -->
+  <div class="flex overflow-x-auto gap-2 no-scrollbar py-1">
+    <button onclick="filterDay(1)" class="day-tab bg-muji-text text-white text-xs px-4 py-2 rounded-full whitespace-nowrap font-medium transition-all shadow-sm" data-day="1">8/15 Day 1</button>
+    <button onclick="filterDay(2)" class="day-tab bg-muji-card border border-muji-sand text-muji-sub text-xs px-4 py-2 rounded-full whitespace-nowrap font-medium transition-all" data-day="2">8/16 Day 2</button>
+    <button onclick="filterDay(3)" class="day-tab bg-muji-card border border-muji-sand text-muji-sub text-xs px-4 py-2 rounded-full whitespace-nowrap font-medium transition-all" data-day="3">8/17 Day 3</button>
+    <button onclick="filterDay(4)" class="day-tab bg-muji-card border border-muji-sand text-muji-sub text-xs px-4 py-2 rounded-full whitespace-nowrap font-medium transition-all" data-day="4">8/18 Day 4</button>
+    <button onclick="filterDay(5)" class="day-tab bg-muji-card border border-muji-sand text-muji-sub text-xs px-4 py-2 rounded-full whitespace-nowrap font-medium transition-all" data-day="5">8/19 Day 5</button>
+  </div>
 
-    <!-- PAGE 1: PLAN (行程表) -->
-    <section id="page-plan" class="page-view space-y-6">
-      <div class="space-y-3">
-        <div class="muji-card p-4 muji-shadow">
-          <div class="flex items-center justify-between border-b border-muji-sand pb-2 mb-3">
-            <span class="text-xs font-bold text-muji-red tracking-wider"><i class="fa-solid fa-plane mr-1"></i> 航班資訊</span>
-            <span class="text-xs text-muji-sub">中華航空 (CI)</span>
-          </div>
-          <div class="grid grid-cols-2 gap-2 text-sm">
-            <div class="bg-muji-bg p-2 rounded">
-              <div class="text-xs font-bold text-muji-text">去程 CI731</div>
-              <div class="text-[10px] text-muji-sub">8/15 (六)</div>
-              <div class="font-mono mt-1 text-muji-red font-bold">09:30 - 14:10</div>
-              <div class="text-[10px] mt-1 text-muji-sub">桃園(T1) ➔ 檳城</div>
-            </div>
-            <div class="bg-muji-bg p-2 rounded">
-              <div class="text-xs font-bold text-muji-text">回程 CI732</div>
-              <div class="text-[10px] text-muji-sub">8/19 (三)</div>
-              <div class="font-mono mt-1 text-muji-red font-bold">15:10 - 19:55</div>
-              <div class="text-[10px] mt-1 text-muji-sub">檳城 ➔ 桃園(T1)</div>
-            </div>
-          </div>
-        </div>
+  <!-- Timeline Container -->
+  <div id="timeline-content" class="space-y-4"></div>
+</section>
 
-        <div class="muji-card p-4 muji-shadow">
-          <div class="flex items-center justify-between border-b border-muji-sand pb-2 mb-2">
-            <span class="text-xs font-bold text-muji-green tracking-wider"><i class="fa-solid fa-hotel mr-1"></i> 住宿安排</span>
-          </div>
-          <div class="text-xs space-y-2 text-muji-text">
-            <div class="flex items-start justify-between">
-              <div>
-                <p class="font-bold text-muji-red">8/15 - 8/17 (前兩晚)</p>
-                <p class="mt-0.5">硬石酒店 Hard Rock Hotel Penang (含早)</p>
-              </div>
-              <a href="https://www.google.com/maps/search/?api=1&query=Hard+Rock+Hotel+Penang" target="_blank" class="text-blue-600 bg-blue-50 px-2 py-1 rounded text-[10px] border border-blue-200 whitespace-nowrap"><i class="fa-solid fa-map-location-dot"></i> Map</a>
-            </div>
-            <div class="border-t border-dashed border-muji-sand pt-2 flex items-start justify-between">
-              <div>
-                <p class="font-bold text-muji-red">8/17 - 8/19 (後兩晚)</p>
-                <p class="mt-0.5">林恩故事屋 Lynn's Story House (無早)</p>
-              </div>
-              <a href="https://www.google.com/maps/search/?api=1&query=Lynn's+Story+House+Penang" target="_blank" class="text-blue-600 bg-blue-50 px-2 py-1 rounded text-[10px] border border-blue-200 whitespace-nowrap"><i class="fa-solid fa-map-location-dot"></i> Map</a>
-            </div>
-          </div>
-        </div>
+<!-- ================= PAGE 2: GUIDE (深度導覽) ================= -->
+<section id="page-guide" class="page-view hidden space-y-6">
+  <div class="text-center py-2">
+    <h2 class="text-lg font-serif font-bold text-muji-text">檳城慢遊深度手冊</h2>
+    <p class="text-xs text-muji-sub mt-1">歷史背景、建築美學與在地冷知識</p>
+  </div>
+
+  <article class="muji-card p-5 muji-shadow space-y-3">
+    <span class="text-[10px] font-bold text-muji-red tracking-widest uppercase bg-red-50 px-2 py-0.5 rounded">Heritage / 喬治市文化遺產</span>
+    <h3 class="text-base font-serif font-bold text-muji-text">戰前店屋 (Pre-war Shophouses) 的建築智慧</h3>
+    <p class="text-xs text-muji-text leading-relaxed font-light text-justify">
+      喬治市擁有全東南亞保存最完好的英殖民與華人融合建築群。所謂的「五腳基 (Five-Foot Way)」騎樓設計，是早期英國殖民政府為了遮蔽熱帶強烈的陽光與雨水而強制規定的建築特色，寬度剛好容納五英尺，是漫步古蹟區最舒適的庇護所。
+    </p>
+  </article>
+
+  <article class="muji-card p-5 muji-shadow space-y-3">
+    <span class="text-[10px] font-bold text-muji-green tracking-widest uppercase bg-green-50 px-2 py-0.5 rounded">Nature / 生態保育</span>
+    <h3 class="text-base font-serif font-bold text-muji-text">升旗山與熱帶雨林生態</h3>
+    <p class="text-xs text-muji-text leading-relaxed font-light text-justify">
+      升旗山（Penang Hill）海拔 833 公尺，是英國人早年的避暑勝地。其山頂的 The Habitat 擁有上億年歷史的原始熱帶雨林，生長著巨大的突盤樹與豐富的植物生態，更是許多特有鳥類的棲息地。
+    </p>
+  </article>
+
+  <!-- OSM 地圖嵌入 -->
+  <div class="muji-card p-4 muji-shadow space-y-2">
+    <h3 class="text-xs font-bold text-muji-text"><i class="fa-solid fa-map text-muji-sub mr-1"></i> 喬治市核心區地圖 (OSM)</h3>
+    <div class="w-full h-48 rounded overflow-hidden border border-muji-sand">
+      <iframe class="w-full h-full border-0" src="[https://www.openstreetmap.org/export/embed.html?bbox=100.3200%2C5.4100%2C100.3450%2C5.4250&amp;layer=mapnik](https://www.openstreetmap.org/export/embed.html?bbox=100.3200%2C5.4100%2C100.3450%2C5.4250&amp;layer=mapnik)"></iframe>
+    </div>
+  </div>
+</section>
+
+<!-- ================= PAGE 3: WALLET (記帳與匯率) ================= -->
+<section id="page-wallet" class="page-view hidden space-y-6">
+  
+  <!-- 匯率計算機 -->
+  <div class="muji-card p-5 muji-shadow space-y-4">
+    <div class="flex justify-between items-center border-b border-muji-sand pb-2">
+      <h3 class="font-bold text-sm text-muji-text"><i class="fa-solid fa-calculator mr-1.5 text-muji-sub"></i> 馬幣匯率計算機</h3>
+      <div class="text-[10px] text-muji-sub flex items-center bg-muji-warm px-2 py-1 rounded">
+        1 MYR ≈ <input id="rate-input" type="number" step="0.1" value="7.3" class="w-10 ml-1 text-center bg-white border border-muji-sand rounded font-bold text-muji-text focus:outline-none"> TWD
       </div>
+    </div>
 
-      <!-- Day Filter Tabs -->
-      <div class="flex overflow-x-auto gap-2 no-scrollbar py-1">
-        <button onclick="filterDay(1)" class="day-tab bg-muji-text text-white text-xs px-4 py-2 rounded-full whitespace-nowrap font-medium transition-all shadow-sm" data-day="1">8/15 Day 1</button>
-        <button onclick="filterDay(2)" class="day-tab bg-muji-card border border-muji-sand text-muji-sub text-xs px-4 py-2 rounded-full whitespace-nowrap font-medium transition-all" data-day="2">8/16 Day 2</button>
-        <button onclick="filterDay(3)" class="day-tab bg-muji-card border border-muji-sand text-muji-sub text-xs px-4 py-2 rounded-full whitespace-nowrap font-medium transition-all" data-day="3">8/17 Day 3</button>
-        <button onclick="filterDay(4)" class="day-tab bg-muji-card border border-muji-sand text-muji-sub text-xs px-4 py-2 rounded-full whitespace-nowrap font-medium transition-all" data-day="4">8/18 Day 4</button>
-        <button onclick="filterDay(5)" class="day-tab bg-muji-card border border-muji-sand text-muji-sub text-xs px-4 py-2 rounded-full whitespace-nowrap font-medium transition-all" data-day="5">8/19 Day 5</button>
+    <div class="bg-muji-bg p-3 rounded-lg border border-muji-sand text-right shadow-inner">
+      <div id="calc-expression" class="text-xs text-muji-sub h-4 overflow-hidden truncate">0</div>
+      <div id="calc-myr" class="text-2xl font-mono font-bold text-muji-text tracking-tight">RM 0</div>
+      <div id="calc-twd" class="text-xs text-muji-green font-medium mt-1">≈ NT$ 0</div>
+    </div>
+
+    <div class="grid grid-cols-4 gap-2 text-sm font-mono">
+      <button onclick="calcInput('C')" class="p-3 bg-red-50 text-red-600 border border-red-100 font-bold rounded-lg active:scale-95 transition-transform">C</button>
+      <button onclick="calcInput('/')" class="p-3 bg-muji-warm text-muji-text font-bold rounded-lg active:scale-95 transition-transform">÷</button>
+      <button onclick="calcInput('*')" class="p-3 bg-muji-warm text-muji-text font-bold rounded-lg active:scale-95 transition-transform">×</button>
+      <button onclick="calcInput('-')" class="p-3 bg-muji-warm text-muji-text font-bold rounded-lg active:scale-95 transition-transform">-</button>
+      
+      <button onclick="calcInput('7')" class="p-3 bg-white border border-muji-sand font-medium rounded-lg shadow-sm active:bg-gray-50 active:scale-95 transition-transform">7</button>
+      <button onclick="calcInput('8')" class="p-3 bg-white border border-muji-sand font-medium rounded-lg shadow-sm active:bg-gray-50 active:scale-95 transition-transform">8</button>
+      <button onclick="calcInput('9')" class="p-3 bg-white border border-muji-sand font-medium rounded-lg shadow-sm active:bg-gray-50 active:scale-95 transition-transform">9</button>
+      <button onclick="calcInput('+')" class="p-3 bg-muji-warm text-muji-text font-bold rounded-lg active:scale-95 transition-transform">+</button>
+      
+      <button onclick="calcInput('4')" class="p-3 bg-white border border-muji-sand font-medium rounded-lg shadow-sm active:bg-gray-50 active:scale-95 transition-transform">4</button>
+      <button onclick="calcInput('5')" class="p-3 bg-white border border-muji-sand font-medium rounded-lg shadow-sm active:bg-gray-50 active:scale-95 transition-transform">5</button>
+      <button onclick="calcInput('6')" class="p-3 bg-white border border-muji-sand font-medium rounded-lg shadow-sm active:bg-gray-50 active:scale-95 transition-transform">6</button>
+      <button onclick="calcEqual()" class="row-span-2 bg-muji-text text-white shadow-md font-bold rounded-lg flex items-center justify-center text-xl active:bg-black active:scale-95 transition-transform">=</button>
+      
+      <button onclick="calcInput('1')" class="p-3 bg-white border border-muji-sand font-medium rounded-lg shadow-sm active:bg-gray-50 active:scale-95 transition-transform">1</button>
+      <button onclick="calcInput('2')" class="p-3 bg-white border border-muji-sand font-medium rounded-lg shadow-sm active:bg-gray-50 active:scale-95 transition-transform">2</button>
+      <button onclick="calcInput('3')" class="p-3 bg-white border border-muji-sand font-medium rounded-lg shadow-sm active:bg-gray-50 active:scale-95 transition-transform">3</button>
+      
+      <button onclick="calcInput('0')" class="col-span-2 p-3 bg-white border border-muji-sand font-medium rounded-lg shadow-sm active:bg-gray-50 active:scale-95 transition-transform">0</button>
+      <button onclick="calcInput('.')" class="p-3 bg-white border border-muji-sand font-medium rounded-lg shadow-sm active:bg-gray-50 active:scale-95 transition-transform">.</button>
+    </div>
+  </div>
+
+  <!-- 新增記帳表單 -->
+  <div class="muji-card p-5 muji-shadow space-y-3">
+    <h3 class="font-bold text-sm text-muji-text border-b border-muji-sand pb-2"><i class="fa-solid fa-pen-to-square mr-1.5 text-muji-sub"></i> 新增旅遊記帳</h3>
+    <div class="space-y-2.5">
+      <input id="expense-title" type="text" placeholder="品項名稱 (例: Grab車資、午餐)" class="w-full p-2.5 text-sm bg-muji-bg border border-muji-sand rounded focus:outline-none focus:border-muji-sub transition-colors">
+      <input id="expense-amount" type="number" step="0.1" placeholder="馬幣金額 (MYR)" class="w-full p-2.5 text-sm bg-muji-bg border border-muji-sand rounded focus:outline-none focus:border-muji-sub transition-colors">
+      
+      <div class="flex items-center gap-2 pt-1">
+        <label class="flex-1 border border-dashed border-muji-sub bg-white hover:bg-muji-bg text-muji-text text-xs p-2.5 rounded text-center cursor-pointer transition-colors shadow-sm">
+          <i class="fa-solid fa-camera mr-1 text-muji-sub"></i> 拍收據/照片
+          <input type="file" id="expense-photo-input" accept="image/*" capture="environment" class="hidden" onchange="handlePhotoUpload(event)">
+        </label>
+        <div id="photo-preview-container" class="w-10 h-10 rounded border border-muji-sand hidden overflow-hidden bg-cover bg-center cursor-pointer shadow-sm" onclick="viewPhoto(this.style.backgroundImage)"></div>
+        <button onclick="addExpense()" class="flex-1 bg-muji-text text-white py-2.5 text-xs font-medium rounded shadow-md active:bg-black transition-colors">記錄消費</button>
       </div>
+    </div>
+  </div>
 
-      <!-- Timeline Container -->
-      <div id="timeline-content" class="space-y-4"></div>
-    </section>
+  <!-- 記帳歷史列表 -->
+  <div class="space-y-3">
+    <div class="flex justify-between items-center px-1">
+      <h3 class="font-bold text-sm text-muji-text">記帳歷史紀錄</h3>
+      <span id="total-expense-display" class="text-[11px] font-medium bg-red-50 text-muji-red px-2 py-1 rounded border border-red-100">總計: RM 0 (NT$ 0)</span>
+    </div>
+    <div id="expense-list" class="space-y-2"></div>
+  </div>
+</section>
 
-    <!-- PAGE 2: SPOT (景點與飯店導覽) -->
-    <section id="page-spot" class="page-view hidden space-y-6">
-      <div class="text-center py-2">
-        <h2 class="text-lg font-serif font-bold text-muji-text">景點與飯店深度導覽</h2>
-        <p class="text-xs text-muji-sub mt-1">地理位置、歷史故事與住宿亮點</p>
+<!-- ================= PAGE 4: LISTS (清單與備忘) ================= -->
+<section id="page-lists" class="page-view hidden space-y-6">
+  
+  <!-- 行前準備 Checklist -->
+  <div class="muji-card p-5 muji-shadow space-y-3 border-t-4 border-t-muji-text">
+    <div class="flex justify-between items-center border-b border-muji-sand pb-2">
+      <h3 class="font-bold text-sm text-muji-text"><i class="fa-solid fa-list-check mr-1.5 text-muji-sub"></i> 行前準備與行李清單</h3>
+      <span id="checklist-progress" class="text-[10px] font-mono bg-muji-warm px-2 py-0.5 rounded text-muji-sub">0/0</span>
+    </div>
+    <div id="checklist-items" class="space-y-3 text-xs"></div>
+  </div>
+
+  <!-- 個人備忘錄 -->
+  <div class="muji-card p-5 muji-shadow space-y-3">
+    <h3 class="font-bold text-sm text-muji-text border-b border-muji-sand pb-2"><i class="fa-solid fa-note-sticky mr-1.5 text-muji-sub"></i> 個人備忘錄</h3>
+    <p class="text-[10px] text-muji-sub">貼上網址會自動轉換為可點擊按鈕唷！</p>
+    <textarea id="memo-input" rows="3" placeholder="輸入備忘事項或網址..." class="w-full p-2.5 text-xs bg-muji-bg border border-muji-sand rounded focus:outline-none focus:border-muji-sub"></textarea>
+    <button onclick="saveMemo()" class="w-full border border-muji-text text-muji-text hover:bg-muji-bg py-1.5 text-xs font-medium rounded transition-colors">儲存備忘錄</button>
+    <div id="memo-display" class="pt-2 text-xs text-muji-text space-y-2 leading-relaxed bg-white border border-dashed border-muji-sand p-3 rounded min-h-[60px]"></div>
+  </div>
+</section>
+
+<!-- ================= PAGE 5: INFO (實用資訊) ================= -->
+<section id="page-info" class="page-view hidden space-y-6">
+  <div class="text-center py-2">
+    <h2 class="text-lg font-serif font-bold text-muji-text">實用資訊與注意事項</h2>
+    <p class="text-xs text-muji-sub mt-1">天氣、緊急聯絡與旅遊禁忌</p>
+  </div>
+
+  <!-- 天氣與氣象連結 -->
+  <div class="muji-card p-4 muji-shadow space-y-2">
+    <h3 class="text-xs font-bold text-muji-text"><i class="fa-solid fa-cloud-sun text-yellow-600 mr-1.5"></i> 當地氣象預報</h3>
+    <p class="text-xs text-muji-sub">檳城屬熱帶雨林氣候，常有午後陣雨，建議隨身攜帶輕便雨具。</p>
+    <a href="[https://www.met.gov.my/](https://www.met.gov.my/)" target="_blank" class="inline-block text-blue-600 bg-blue-50 border border-blue-200 px-3 py-1 rounded text-xs mt-1"><i class="fa-solid fa-globe mr-1"></i>馬來西亞氣象局官網</a>
+  </div>
+
+  <!-- 緊急聯絡電話 -->
+  <div class="muji-card p-5 muji-shadow space-y-3 border-l-4 border-muji-red">
+    <h3 class="font-bold text-sm text-muji-red border-b border-muji-sand pb-2"><i class="fa-solid fa-phone-volume mr-1.5"></i> 緊急聯絡資訊</h3>
+    <div class="space-y-2 text-xs text-muji-text">
+      <div class="flex justify-between py-1.5 border-b border-muji-bg items-center">
+        <span>馬來西亞警察 / 救護車</span>
+        <a href="tel:999" class="bg-red-50 text-red-600 px-3 py-1 rounded-full font-bold border border-red-100"><i class="fa-solid fa-phone mr-1"></i>999</a>
       </div>
-
-      <article class="muji-card overflow-hidden muji-shadow">
-        <img src="https://images.unsplash.com/photo-1582719508461-905c673771fd?auto=format&fit=crop&w=800&q=80" alt="Hard Rock Hotel Penang" class="w-full h-48 object-cover">
-        <div class="p-5 space-y-3">
-          <div class="flex justify-between items-center">
-            <span class="text-[10px] font-bold text-muji-red tracking-widest uppercase bg-red-50 px-2 py-1 rounded">Hotel / 前兩晚住宿</span>
-            <a href="https://www.google.com/maps/search/?api=1&query=Hard+Rock+Hotel+Penang" target="_blank" class="text-blue-600 text-xs"><i class="fa-solid fa-map-location-dot"></i> Google Maps</a>
-          </div>
-          <h3 class="text-lg font-serif font-bold text-muji-text">檳城硬石酒店 Hard Rock Hotel Penang</h3>
-          <p class="text-xs text-muji-text leading-relaxed font-light text-justify">位於 Batu Ferringhi 海灘區，擁全檳城最大的 26,000 平方英尺潟湖泳池與兒童水上滑水道，結合美式搖滾風格與南洋熱帶度假風情。</p>
-        </div>
-      </article>
-
-      <article class="muji-card overflow-hidden muji-shadow">
-        <img src="https://images.unsplash.com/photo-1555854877-bab0e564b8d5?auto=format&fit=crop&w=800&q=80" alt="Lynn's Story House Penang" class="w-full h-48 object-cover">
-        <div class="p-5 space-y-3">
-          <div class="flex justify-between items-center">
-            <span class="text-[10px] font-bold text-muji-green tracking-widest uppercase bg-green-50 px-2 py-1 rounded">Homestay / 後兩晚住宿</span>
-            <a href="https://www.google.com/maps/search/?api=1&query=Lynn's+Story+House+Penang" target="_blank" class="text-blue-600 text-xs"><i class="fa-solid fa-map-location-dot"></i> Google Maps</a>
-          </div>
-          <h3 class="text-lg font-serif font-bold text-muji-text">林恩故事屋 Lynn's Story House Penang</h3>
-          <p class="text-xs text-muji-text leading-relaxed font-light text-justify">位於喬治市世界文化遺產核心區的質感老宅民宿，保留戰前店屋天井與木質結構，充滿濃厚的歲月故事感與家一般的溫馨。</p>
-        </div>
-      </article>
-
-      <article class="muji-card overflow-hidden muji-shadow">
-        <img src="https://images.unsplash.com/photo-1533900298318-6b8da08a523e?auto=format&fit=crop&w=800&q=80" alt="Batu Ferringhi Night Market" class="w-full h-48 object-cover">
-        <div class="p-5 space-y-3">
-          <div class="flex justify-between items-center">
-            <span class="text-[10px] font-bold text-yellow-700 tracking-widest uppercase bg-yellow-50 px-2 py-1 rounded">Beach & Night Market / 景點</span>
-            <a href="https://www.google.com/maps/search/?api=1&query=Batu+Ferringhi+Night+Market" target="_blank" class="text-blue-600 text-xs"><i class="fa-solid fa-map-location-dot"></i> Google Maps</a>
-          </div>
-          <h3 class="text-lg font-serif font-bold text-muji-text">巴都丁宜海灘與夜市</h3>
-          <p class="text-xs text-muji-text leading-relaxed font-light text-justify">檳城西北部最知名的海灘渡假勝地，傍晚沿著主幹道展開長達數公里的觀光夜市，漫步感受南洋海風。</p>
-        </div>
-      </article>
-
-      <article class="muji-card overflow-hidden muji-shadow">
-        <img src="https://images.unsplash.com/photo-1535083783855-76ae62b2914e?auto=format&fit=crop&w=800&q=80" alt="Entopia" class="w-full h-48 object-cover">
-        <div class="p-5 space-y-3">
-          <div class="flex justify-between items-center">
-            <span class="text-[10px] font-bold text-muji-green tracking-widest uppercase bg-green-50 px-2 py-1 rounded">Eco Park / 景點</span>
-            <a href="https://www.google.com/maps/search/?api=1&query=Entopia+by+Penang+Butterfly+Farm" target="_blank" class="text-blue-600 text-xs"><i class="fa-solid fa-map-location-dot"></i> Google Maps</a>
-          </div>
-          <h3 class="text-lg font-serif font-bold text-muji-text">Entopia 蝴蝶公園（蟲鳴大地）</h3>
-          <p class="text-xs text-muji-text leading-relaxed font-light text-justify">全馬最大蝴蝶與昆蟲生態園，擁有大型玻璃溫室與瀑布花園，室內冷氣舒適，非常適合親子同樂。</p>
-        </div>
-      </article>
-
-      <article class="muji-card overflow-hidden muji-shadow">
-        <img src="https://images.unsplash.com/photo-1596422846543-7226fdb0d075?auto=format&fit=crop&w=800&q=80" alt="Penang Hill" class="w-full h-48 object-cover">
-        <div class="p-5 space-y-3">
-          <div class="flex justify-between items-center">
-            <span class="text-[10px] font-bold text-muji-red tracking-widest uppercase bg-red-50 px-2 py-1 rounded">Nature / 景點</span>
-            <a href="https://www.google.com/maps/search/?api=1&query=Penang+Hill" target="_blank" class="text-blue-600 text-xs"><i class="fa-solid fa-map-location-dot"></i> Google Maps</a>
-          </div>
-          <h3 class="text-lg font-serif font-bold text-muji-text">升旗山與空中步道 (The Habitat)</h3>
-          <p class="text-xs text-muji-text leading-relaxed font-light text-justify">搭乘百年歷史纜車登頂，走訪熱帶雨林高空步道，俯瞰檳城全島與海峽壯麗風光。</p>
-        </div>
-      </article>
-
-      <article class="muji-card overflow-hidden muji-shadow">
-        <img src="https://images.unsplash.com/photo-1579783900882-c0d3dad7b119?auto=format&fit=crop&w=800&q=80" alt="Armenian Street Mural" class="w-full h-48 object-cover">
-        <div class="p-5 space-y-3">
-          <div class="flex justify-between items-center">
-            <span class="text-[10px] font-bold text-yellow-700 tracking-widest uppercase bg-yellow-50 px-2 py-1 rounded">Heritage / 景點</span>
-            <a href="https://www.google.com/maps/search/?api=1&query=Armenian+Street+Penang" target="_blank" class="text-blue-600 text-xs"><i class="fa-solid fa-map-location-dot"></i> Google Maps</a>
-          </div>
-          <h3 class="text-lg font-serif font-bold text-muji-text">藝術街壁畫 (Armenian Street)</h3>
-          <p class="text-xs text-muji-text leading-relaxed font-light text-justify">喬治市最具代表性的街頭藝術區，尋找著名的「姐弟共騎」等互動壁畫，感受濃厚人文氣息。</p>
-        </div>
-      </article>
-
-      <article class="muji-card overflow-hidden muji-shadow">
-        <img src="https://images.unsplash.com/photo-1544644181-1484b3fdfc62?auto=format&fit=crop&w=800&q=80" alt="Chew Jetty" class="w-full h-48 object-cover">
-        <div class="p-5 space-y-3">
-          <div class="flex justify-between items-center">
-            <span class="text-[10px] font-bold text-muji-green tracking-widest uppercase bg-green-50 px-2 py-1 rounded">Heritage / 景點</span>
-            <a href="https://www.google.com/maps/search/?api=1&query=Chew+Jetty" target="_blank" class="text-blue-600 text-xs"><i class="fa-solid fa-map-location-dot"></i> Google Maps</a>
-          </div>
-          <h3 class="text-lg font-serif font-bold text-muji-text">姓周橋 (Chew Jetty)</h3>
-          <p class="text-xs text-muji-text leading-relaxed font-light text-justify">百年華人水上木屋聚落，保留原始純樸的漁村風情，傍晚時分的海面夕陽餘暉極其迷人。</p>
-        </div>
-      </article>
-
-      <article class="muji-card overflow-hidden muji-shadow">
-        <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=800&q=80" alt="Wonderfood Museum" class="w-full h-48 object-cover">
-        <div class="p-5 space-y-3">
-          <div class="flex justify-between items-center">
-            <span class="text-[10px] font-bold text-muji-red tracking-widest uppercase bg-red-50 px-2 py-1 rounded">Museum / 景點</span>
-            <a href="https://www.google.com/maps/search/?api=1&query=Wonderfood+Museum+Penang" target="_blank" class="text-blue-600 text-xs"><i class="fa-solid fa-map-location-dot"></i> Google Maps</a>
-          </div>
-          <h3 class="text-lg font-serif font-bold text-muji-text">食物狂想館 (Wonderfood Museum)</h3>
-          <p class="text-xs text-muji-text leading-relaxed font-light text-justify">充滿趣味的巨型立體美食模型展館，以寓教於樂的方式展現馬來西亞多元族群的飲食文化。</p>
-        </div>
-      </article>
-
-      <article class="muji-card overflow-hidden muji-shadow">
-        <img src="https://images.unsplash.com/photo-1628187834771-469b82cb1ab5?auto=format&fit=crop&w=800&q=80" alt="Esplanade" class="w-full h-48 object-cover">
-        <div class="p-5 space-y-3">
-          <div class="flex justify-between items-center">
-            <span class="text-[10px] font-bold text-muji-sub tracking-widest uppercase bg-gray-50 px-2 py-1 rounded">Seafront / 景點</span>
-            <a href="https://www.google.com/maps/search/?api=1&query=Esplanade+Seafront+Penang" target="_blank" class="text-blue-600 text-xs"><i class="fa-solid fa-map-location-dot"></i> Google Maps</a>
-          </div>
-          <h3 class="text-lg font-serif font-bold text-muji-text">舊關仔角海濱公園 (Esplanade)</h3>
-          <p class="text-xs text-muji-text leading-relaxed font-light text-justify">沿著海濱的平坦散步道，緊鄰充滿英式殖民色彩的市政廳建築與大片綠地草皮。</p>
-        </div>
-      </article>
-    </section>
-
-    <!-- PAGE 3: FOOD (美食圖鑑) -->
-    <section id="page-food" class="page-view hidden space-y-6">
-      <div class="text-center py-2">
-        <h2 class="text-lg font-serif font-bold text-muji-text">檳城在地美食圖鑑 & 經典名店</h2>
-        <p class="text-xs text-muji-sub mt-1">嚴選三大種族代表美味、葷素標示與地圖導航</p>
+      <div class="flex justify-between py-1.5 border-b border-muji-bg items-center">
+        <span>馬來西亞旅遊警察專線</span>
+        <a href="tel:+60321496590" class="bg-blue-50 text-blue-600 px-2 py-1 rounded-full font-bold border border-blue-100 text-[10px]"><i class="fa-solid fa-phone mr-1"></i>+60 3-2149 6590</a>
       </div>
-      <div class="space-y-4">
-        <div class="muji-card p-4 muji-shadow space-y-2">
-          <div class="flex justify-between items-center">
-            <h3 class="text-sm font-bold text-muji-text">檳城炒粿條 (Char Kway Teow)</h3>
-            <span class="text-[10px] bg-red-50 text-muji-red px-2 py-0.5 rounded font-medium">葷 / 可找素食檔</span>
-          </div>
-          <p class="text-xs text-muji-text leading-relaxed font-light">大馬美食之魂，以大火快炒出濃郁鑊氣。部分熟食中心亦有販售素炒粿條。</p>
-        </div>
-        <div class="muji-card p-4 muji-shadow space-y-2">
-          <div class="flex justify-between items-center">
-            <h3 class="text-sm font-bold text-muji-text">檳城福建麵 (Penang Hokkien Mee)</h3>
-            <span class="text-[10px] bg-red-50 text-muji-red px-2 py-0.5 rounded font-medium">葷食代表</span>
-          </div>
-          <p class="text-xs text-muji-text leading-relaxed font-light">濃郁的蝦殼熬煮湯頭，搭配黃麵與米粉、辣醬，是當地最具代表性的早午餐。</p>
-        </div>
-        <div class="muji-card p-4 muji-shadow space-y-2">
-          <div class="flex justify-between items-center">
-            <h3 class="text-sm font-bold text-muji-text">傳統經濟飯 / 中式素食餐館</h3>
-            <span class="text-[10px] bg-green-50 text-muji-green px-2 py-0.5 rounded font-medium">奶素 / 全素友善</span>
-          </div>
-          <p class="text-xs text-muji-text leading-relaxed font-light">檳城街頭常見的華人茶室或素食檔口，提供豐富的炒青菜、豆腐與素料，完美滿足素食者需求。</p>
-        </div>
+      <div class="flex justify-between py-1.5 items-center">
+        <span>台北經濟文化辦事處(馬來西亞)</span>
+        <a href="tel:+60321612339" class="bg-blue-50 text-blue-600 px-2 py-1 rounded-full font-bold border border-blue-100 text-[10px]"><i class="fa-solid fa-phone mr-1"></i>+60 3-2161 2339</a>
       </div>
-    </section>
+    </div>
+  </div>
 
-    <!-- PAGE 4: SHOP (購物與伴手禮) -->
-    <section id="page-shop" class="page-view hidden space-y-6">
-      <div class="text-center py-2">
-        <h2 class="text-lg font-serif font-bold text-muji-text">檳城必買伴手禮指南</h2>
-        <p class="text-xs text-muji-sub mt-1">超市掃貨與傳統糕餅推薦</p>
-      </div>
-      <div class="space-y-4">
-        <div class="muji-card p-4 muji-shadow space-y-2">
-          <h3 class="text-sm font-bold text-muji-text">MyKuali 檳城白咖哩麵</h3>
-          <p class="text-xs text-muji-text leading-relaxed font-light">曾多次被評選為全球十大美味泡麵，濃郁椰奶香與特製辣醬，送禮自用兩相宜。</p>
-        </div>
-        <div class="muji-card p-4 muji-shadow space-y-2">
-          <h3 class="text-sm font-bold text-muji-text">淡汶餅 (Tambun Biscuit) / 香餅</h3>
-          <p class="text-xs text-muji-text leading-relaxed font-light">檳城著名的傳統酥餅，外皮酥脆、內餡為香甜綠豆沙，最具代表性的伴手禮之一。</p>
-        </div>
-        <div class="muji-card p-4 muji-shadow space-y-2">
-          <h3 class="text-sm font-bold text-muji-text">BOH 馬來西亞在地紅茶</h3>
-          <p class="text-xs text-muji-text leading-relaxed font-light">產自金馬崙高原的知名茶葉品牌，茶香濃郁，是日常品茗或搭配下午茶的最佳選擇。</p>
-        </div>
-      </div>
-    </section>
+  <!-- 旅遊注意事項與禁忌 -->
+  <div class="muji-card p-5 muji-shadow space-y-3">
+    <h3 class="font-bold text-sm text-muji-text border-b border-muji-sand pb-2"><i class="fa-solid fa-triangle-exclamation text-amber-600 mr-1.5"></i> 注意事項與旅遊禁忌</h3>
+    <ul class="text-xs text-muji-sub space-y-2 list-disc pl-4 leading-relaxed">
+      <li><strong>小費文化</strong>：馬來西亞通常不強制收小費，部分餐廳會收取 10% 服務費與 6% SST（消費稅）。</li>
+      <li><strong>宗教禮儀</strong>：參觀清真寺或廟宇時請穿著端莊（遮蔽肩膀與膝蓋），進入部分場所須脫鞋。</li>
+      <li><strong>入境規定</strong>：嚴禁攜帶肉製品、新鮮水果及違禁藥品入境台灣。</li>
+      <li><strong>旅遊稅 (Tourism Tax)</strong>：外國旅客入住馬來西亞飯店，通常會被徵收每房每晚 RM10 的旅遊稅。</li>
+    </ul>
+  </div>
 
-    <!-- PAGE 5: WALLET (記帳與工具) -->
-    <section id="page-wallet" class="page-view hidden space-y-6">
-      <div class="muji-card p-5 muji-shadow space-y-4">
-        <div class="flex justify-between items-center border-b border-muji-sand pb-2">
-          <h3 class="font-bold text-sm text-muji-text"><i class="fa-solid fa-calculator mr-1.5 text-muji-sub"></i> 匯率計算機</h3>
-          <div class="text-[10px] text-muji-sub flex items-center bg-muji-warm px-2 py-1 rounded">
-            1 MYR ≈ <input id="rate-input" type="number" step="0.1" value="7.3" class="w-10 ml-1 text-center bg-white border border-muji-sand rounded font-bold text-muji-text focus:outline-none"> TWD
-          </div>
-        </div>
-        <div class="bg-muji-bg p-3 rounded-lg border border-muji-sand text-right shadow-inner">
-          <div id="calc-expression" class="text-xs text-muji-sub h-4 overflow-hidden truncate">0</div>
-          <div id="calc-myr" class="text-2xl font-mono font-bold text-muji-text tracking-tight">RM 0</div>
-          <div id="calc-twd" class="text-xs text-muji-green font-medium mt-1">≈ NT$ 0</div>
-        </div>
-        <div class="grid grid-cols-4 gap-2 text-sm font-mono">
-          <button onclick="calcInput('C')" class="p-3 bg-red-50 text-red-600 border border-red-100 font-bold rounded-lg">C</button>
-          <button onclick="calcInput('/')" class="p-3 bg-muji-warm text-muji-text font-bold rounded-lg">÷</button>
-          <button onclick="calcInput('*')" class="p-3 bg-muji-warm text-muji-text font-bold rounded-lg">×</button>
-          <button onclick="calcInput('-')" class="p-3 bg-muji-warm text-muji-text font-bold rounded-lg">-</button>
-          <button onclick="calcInput('7')" class="p-3 bg-white border border-muji-sand rounded-lg">7</button>
-          <button onclick="calcInput('8')" class="p-3 bg-white border border-muji-sand rounded-lg">8</button>
-          <button onclick="calcInput('9')" class="p-3 bg-white border border-muji-sand rounded-lg">9</button>
-          <button onclick="calcInput('+')" class="p-3 bg-muji-warm text-muji-text font-bold rounded-lg">+</button>
-          <button onclick="calcInput('4')" class="p-3 bg-white border border-muji-sand rounded-lg">4</button>
-          <button onclick="calcInput('5')" class="p-3 bg-white border border-muji-sand rounded-lg">5</button>
-          <button onclick="calcInput('6')" class="p-3 bg-white border border-muji-sand rounded-lg">6</button>
-          <button onclick="calcEqual()" class="row-span-2 bg-muji-text text-white font-bold rounded-lg flex items-center justify-center text-xl">=</button>
-          <button onclick="calcInput('1')" class="p-3 bg-white border border-muji-sand rounded-lg">1</button>
-          <button onclick="calcInput('2')" class="p-3 bg-white border border-muji-sand rounded-lg">2</button>
-          <button onclick="calcInput('3')" class="p-3 bg-white border border-muji-sand rounded-lg">3</button>
-          <button onclick="calcInput('0')" class="col-span-2 p-3 bg-white border border-muji-sand rounded-lg">0</button>
-          <button onclick="calcInput('.')" class="p-3 bg-white border border-muji-sand rounded-lg">.</button>
-        </div>
-      </div>
-    </section>
-
-  </main>
-
-  <!-- Bottom Navigation Bar -->
-  <nav class="fixed bottom-0 left-0 right-0 max-w-md mx-auto bg-muji-card border-t border-muji-sand px-1 py-1.5 z-40 flex justify-around items-center shadow-[0_-4px_10px_rgba(0,0,0,0.02)]">
-    <button onclick="switchTab('plan')" id="nav-plan" class="nav-btn flex flex-col items-center w-1/5 py-1 text-muji-red transition-colors">
-      <i class="fa-solid fa-calendar-day text-lg mb-0.5"></i>
-      <span class="text-[9px] font-medium">行程</span>
-    </button>
-    <button onclick="switchTab('spot')" id="nav-spot" class="nav-btn flex flex-col items-center w-1/5 py-1 text-muji-sub hover:text-muji-text transition-colors">
-      <i class="fa-solid fa-map-location-dot text-lg mb-0.5"></i>
-      <span class="text-[9px] font-medium">景點</span>
-    </button>
-    <button onclick="switchTab('food')" id="nav-food" class="nav-btn flex flex-col items-center w-1/5 py-1 text-muji-sub hover:text-muji-text transition-colors">
-      <i class="fa-solid fa-utensils text-lg mb-0.5"></i>
-      <span class="text-[9px] font-medium">美食</span>
-    </button>
-    <button onclick="switchTab('shop')" id="nav-shop" class="nav-btn flex flex-col items-center w-1/5 py-1 text-muji-sub hover:text-muji-text transition-colors">
-      <i class="fa-solid fa-bag-shopping text-lg mb-0.5"></i>
-      <span class="text-[9px] font-medium">伴手禮</span>
-    </button>
-    <button onclick="switchTab('wallet')" id="nav-wallet" class="nav-btn flex flex-col items-center w-1/5 py-1 text-muji-sub hover:text-muji-text transition-colors">
-      <i class="fa-solid fa-wallet text-lg mb-0.5"></i>
-      <span class="text-[9px] font-medium">工具</span>
-    </button>
-  </nav>
-
-  <script>
-    const ITINERARY = {
-      1: {
-        date: '8/15 (六)',
-        title: '抵達檳城 ➔ Batu Ferringhi 海濱渡假',
-        items: [
-          { time: '14:10', title: '搭乘 CI731 順利抵達檳城機場', desc: '辦理入境、提領行李。叫 Grab 前往硬石飯店。', tag: '交通' },
-          { time: '15:30', title: 'Hard Rock Hotel Check-in', desc: '辦理入住。長輩房間休息，小朋友體驗潟湖泳池與滑水道。', tag: '住宿', map: 'Hard Rock Hotel Penang' },
-          { time: '18:30', title: '巴都丁宜夜市與海濱晚餐', desc: '漫步夜市，大馬道地小吃與素食檔口匯聚，葷素皆宜。', tag: '美食', map: 'Batu Ferringhi Night Market' }
-        ]
-      },
-      2: {
-        date: '8/16 (日)',
-        title: '生態探索 ➔ 西北海岸度假',
-        items: [
-          { time: '09:30', title: 'Entopia 蝴蝶公園（蟲鳴大地）', desc: '全馬最大室內外蝴蝶與昆蟲生態溫室，冷氣舒適。', tag: '景點', map: 'Entopia by Penang Butterfly Farm' },
-          { time: '12:30', title: '午餐：園區內 Botanist 或鄰近茶室', desc: '提供在地輕食、炒粿條與素食經濟飯，葷素兼顧。', tag: '美食' },
-          { time: '15:00', title: '硬石飯店設施與海灘時光', desc: '享受飯店泳池、私人海灘夕陽與放鬆下午茶。', tag: '休閒', map: 'Hard Rock Hotel Penang' }
-        ]
-      },
-      3: {
-        date: '8/17 (一)',
-        title: '升旗山纜車 ➔ 喬治市古蹟巡禮',
-        items: [
-          { time: '09:00', title: '升旗山與空中步道 (The Habitat)', desc: '搭乘百年纜車登頂，漫步熱帶雨林高空步道。', tag: '景點', map: 'Penang Hill Upper Station' },
-          { time: '12:30', title: '午餐：山頂美食中心 / 亞依淡市鎮', desc: '可選擇山頂餐飲或下山至亞依淡品嚐道地素食麵與叻沙。', tag: '美食' },
-          { time: '15:00', title: '林恩故事屋 (Lynn\'s Story House) Check-in', desc: '入住喬治市核心區戰前老宅民宿，感受南洋歷史氛圍。', tag: '住宿', map: 'Lynn\'s Story House Penang' }
-        ]
-      },
-      4: {
-        date: '8/18 (二)',
-        title: '古蹟壁畫街 ➔ 食物狂想館',
-        items: [
-          { time: '09:30', title: '藝術街壁畫尋寶 (Armenian Street)', desc: '漫步喬治市老街，尋找「姐弟共騎」等經典街頭壁畫。', tag: '景點', map: 'Armenian Street Penang' },
-          { time: '12:00', title: '午餐：德成飯店與周邊素食完美搭配', desc: '葷食享用著名粵菜大排檔，素食家人可於鄰近步行距離選購純素捲餅或素食茶室。', tag: '美食', map: 'Tek Sen Restaurant' },
-          { time: '14:30', title: '食物狂想館 (Wonderfood Museum)', desc: '超大巨型美食模型展覽，趣味互動與全館冷氣。', tag: '景點', map: 'Wonderfood Museum Penang' },
-          { time: '17:30', title: '姓周橋夕陽漫步 (Chew Jetty)', desc: '造訪百年水上木棧道，欣賞夕陽海景。', tag: '景點', map: 'Chew Jetty' }
-        ]
-      },
-      5: {
-        date: '8/19 (三)',
-        title: '舊關仔角海濱 ➔ 伴手禮採買 ➔ 返台',
-        items: [
-          { time: '09:30', title: '舊關仔角海濱公園 (Esplanade)', desc: '漫步英式殖民風格海濱長廊與大草皮。', tag: '景點', map: 'Esplanade Seafront Penang' },
-          { time: '11:30', title: '搭 Grab 前往機場準備返台', desc: '搭乘 CI732 班機（15:10 起飛）平安返台。', tag: '交通', highlight: true }
-        ]
-      }
-    };
-
-    let currentCalcExpr = '';
-
-    document.addEventListener('DOMContentLoaded', () => {
-      filterDay(1);
-    });
-
-    function switchTab(tabName) {
-      document.querySelectorAll('.page-view').forEach(el => el.classList.add('hidden'));
-      document.getElementById(`page-${tabName}`).classList.remove('hidden');
-
-      document.querySelectorAll('.nav-btn').forEach(btn => {
-        btn.classList.remove('text-muji-red');
-        btn.classList.add('text-muji-sub');
-      });
-      document.getElementById(`nav-${tabName}`).classList.remove('text-muji-sub');
-      document.getElementById(`nav-${tabName}`).classList.add('text-muji-red');
-      window.scrollTo(0, 0);
-    }
-
-    function filterDay(dayNum) {
-      document.querySelectorAll('.day-tab').forEach(btn => {
-        if(parseInt(btn.dataset.day) === dayNum) {
-          btn.classList.remove('bg-muji-card', 'border', 'border-muji-sand', 'text-muji-sub');
-          btn.classList.add('bg-muji-text', 'text-white');
-        } else {
-          btn.classList.add('bg-muji-card', 'border', 'border-muji-sand', 'text-muji-sub');
-          btn.classList.remove('bg-muji-text', 'text-white');
-        }
-      });
-
-      const dayData = ITINERARY[dayNum];
-      const container = document.getElementById('timeline-content');
-      let html = `<div class="muji-card p-4 muji-shadow bg-muji-warm mb-3"><div class="font-serif font-bold text-base text-muji-text">${dayData.date}</div><div class="text-xs text-muji-sub mt-1">${dayData.title}</div></div>`;
-
-      dayData.items.forEach(item => {
-        const isHighlight = item.highlight ? 'border-l-4 border-muji-red bg-red-50' : 'bg-muji-card';
-        const mapButton = item.map ? `<a href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(item.map)}" target="_blank" class="inline-block mt-2 text-xs text-blue-700 bg-blue-50 border border-blue-200 px-2.5 py-1 rounded-full"><i class="fa-solid fa-location-dot mr-1"></i>Google Maps</a>` : '';
-        html += `<div class="muji-card p-4 muji-shadow ${isHighlight} relative mb-3"><div class="flex items-center justify-between mb-1.5"><span class="font-mono text-xs font-bold text-muji-red">${item.time}</span><span class="text-[10px] bg-muji-bg text-muji-sub px-2 py-0.5 rounded-full border border-muji-sand">${item.tag}</span></div><h4 class="font-bold text-sm text-muji-text">${item.title}</h4><p class="text-xs text-muji-sub mt-1 leading-relaxed">${item.desc}</p>${mapButton}</div>`;
-      });
-      container.innerHTML = html;
-    }
-
-    function calcInput(char) {
-      if(char === 'C') { currentCalcExpr = ''; } 
-      else { currentCalcExpr += char; }
-      updateCalcDisplay();
-    }
-    function calcEqual() {
-      try {
-        if(!currentCalcExpr) return;
-        const sanitized = currentCalcExpr.replace(/[^0-9+\-*/.]/g, '');
-        const res = Function(`'use strict'; return (${sanitized})`)();
-        currentCalcExpr = String(Math.round(res * 100) / 100);
-      } catch(e) { currentCalcExpr = 'Error'; }
-      updateCalcDisplay();
-    }
-    function updateCalcDisplay() {
-      const exprEl = document.getElementById('calc-expression');
-      const myrEl = document.getElementById('calc-myr');
-      const twdEl = document.getElementById('calc-twd');
-      const rate = parseFloat(document.getElementById('rate-input').value) || 7.3;
-
-      exprEl.innerText = currentCalcExpr || '0';
-      let val = 0;
-      try {
-        const sanitized = currentCalcExpr.replace(/[^0-9+\-*/.]/g, '');
-        val = sanitized ? Function(`'use strict'; return (${sanitized})`)() : 0;
-      } catch(e) { val = 0; }
-
-      if(isNaN(val) || val === Infinity) val = 0;
-      myrEl.innerText = `RM ${val.toFixed(2)}`;
-      twdEl.innerText = `≈ NT$ ${Math.round(val * rate)}`;
-    }
-
-    if ('serviceWorker' in navigator) {
-      window.addEventListener('load', () => {
-        navigator.serviceWorker.register('./sw.js').catch(err => console.log(err));
-      });
-    }
-  </script>
-</body>
-</html>
+</section>
